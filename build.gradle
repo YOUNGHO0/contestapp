@@ -12,6 +12,9 @@ java {
 }
 
 configurations {
+    all{
+        exclude module: 'org.hamcrest'
+    }
     compileOnly {
         extendsFrom annotationProcessor
     }
