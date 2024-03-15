@@ -1,4 +1,4 @@
-package com.project.contestapplication.infrastructure.filestorage;
+package com.project.contestapplication.storage.domain;
 
 import org.springframework.web.multipart.MultipartFile;
 

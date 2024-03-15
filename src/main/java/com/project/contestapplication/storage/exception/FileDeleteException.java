@@ -1,4 +1,4 @@
-package com.project.contestapplication.exception;
+package com.project.contestapplication.storage.exception;
 
 public class FileDeleteException extends RuntimeException{
 

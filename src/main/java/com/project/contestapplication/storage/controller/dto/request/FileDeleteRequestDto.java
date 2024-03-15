@@ -1,4 +1,4 @@
-package com.project.contestapplication.controller.dto.request;
+package com.project.contestapplication.storage.controller.dto.request;
 
 import lombok.Data;
 

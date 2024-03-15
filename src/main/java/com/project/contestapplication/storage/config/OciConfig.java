@@ -1,4 +1,4 @@
-package com.project.contestapplication.infrastructure.filestorage.config;
+package com.project.contestapplication.storage.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;

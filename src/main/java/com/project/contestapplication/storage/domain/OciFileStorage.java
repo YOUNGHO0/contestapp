@@ -1,14 +1,13 @@
-package com.project.contestapplication.infrastructure.filestorage;
+package com.project.contestapplication.storage.domain;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
-import com.project.contestapplication.exception.FileDeleteException;
-import com.project.contestapplication.exception.FileUploadException;
+import com.project.contestapplication.storage.exception.FileDeleteException;
+import com.project.contestapplication.storage.exception.FileUploadException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -22,14 +21,14 @@ public class OciFileStorage implements FileStorage {
     private String bucket;
     private final AmazonS3 amazonS3;
     @Override
-    public boolean upload(File file) {
+    public boolean upload(FileRequest fileRequest) {
 
         try {
             ObjectMetadata objMeta = new ObjectMetadata();
-            objMeta.setContentLength(file.getMultipartFile().getInputStream().available());
-            PutObjectResult result =amazonS3.putObject(bucket,file.getFileName() ,file.getMultipartFile().getInputStream(), objMeta);
-            log.info("uploaded file: url={}", amazonS3.getUrl(bucket, file.getFileName()));
-            log.info("{}, {}",file.getMultipartFile().getName(), file.getMultipartFile().getOriginalFilename() );
+            objMeta.setContentLength(fileRequest.getMultipartFile().getInputStream().available());
+            PutObjectResult result =amazonS3.putObject(bucket, fileRequest.getFileName() , fileRequest.getMultipartFile().getInputStream(), objMeta);
+            log.info("uploaded file: url={}", amazonS3.getUrl(bucket, fileRequest.getFileName()));
+            log.info("{}, {}", fileRequest.getMultipartFile().getName(), fileRequest.getMultipartFile().getOriginalFilename() );
         } catch (IOException e) {
             throw new FileUploadException();
         }

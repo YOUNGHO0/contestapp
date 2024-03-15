@@ -1,12 +1,10 @@
-package com.project.contestapplication.infrastructure.filestorage;
+package com.project.contestapplication.storage.domain;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.UUID;
-
 @Component
-public class UuidFilenameResolver implements FileNameResolver{
+public class UuidFilenameResolver implements FileNameResolver {
 
     @Override
     public String resolve(MultipartFile multipartFile, String uuid) {
