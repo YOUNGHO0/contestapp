@@ -1,9 +1,10 @@
-package com.project.contestapplication.controller;
+package com.project.contestapplication.storage.controller;
 
-import com.project.contestapplication.controller.dto.request.FileDeleteRequestDto;
-import com.project.contestapplication.infrastructure.filestorage.File;
-import com.project.contestapplication.infrastructure.filestorage.FileNameResolver;
-import com.project.contestapplication.infrastructure.filestorage.FileStorage;
+import com.project.contestapplication.storage.controller.dto.request.FileDeleteRequestDto;
+import com.project.contestapplication.storage.domain.File;
+import com.project.contestapplication.storage.domain.FileRequest;
+import com.project.contestapplication.storage.domain.FileNameResolver;
+import com.project.contestapplication.storage.domain.FileStorage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,8 @@ public class FileStorageController {
 
         for(MultipartFile multipartFile : multipartFiles){
             String fileName = fileNameResolver.resolve(multipartFile,UUID.randomUUID().toString());
-            fileStorage.upload(new File(multipartFile,fileName));
+            fileStorage.upload(new FileRequest(multipartFile,fileName));
+
         }
 
         return ResponseEntity.ok().body("안녕하세요");

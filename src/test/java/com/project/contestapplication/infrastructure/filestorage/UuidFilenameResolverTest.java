@@ -1,5 +1,6 @@
 package com.project.contestapplication.infrastructure.filestorage;
 
+import com.project.contestapplication.storage.domain.UuidFilenameResolver;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
