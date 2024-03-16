@@ -2,6 +2,7 @@ package com.project.contestapplication.contest.exception.handler;
 
 import com.project.contestapplication.contest.exception.DifferentContestStatusException;
 import com.project.contestapplication.contest.exception.IdException;
+import com.project.contestapplication.contest.exception.NoContentException;
 import com.project.contestapplication.contest.exception.NoContestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +24,7 @@ public class ContestExceptionHandler {
         return ResponseEntity.badRequest().body("존재하지 않는 대회 게시글입니다");
     }
 
-
+    @ExceptionHandler(NoContentException.class)
+    public ResponseEntity noContent(){ return ResponseEntity.badRequest().body("내용이 없습니다");}
 
 }
